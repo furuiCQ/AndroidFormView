@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="FormView">
+        <!--左侧图标属性-->
+        <attr name="fv_left_image" format="reference" />
+        <attr name="fv_left_image_max_width" format="dimension" />
+        <attr name="fv_left_image_max_height" format="dimension" />
+        <attr name="fv_left_image_right_margin" format="dimension" />
+        <attr name="fv_left_image_scale_type">
+            <enum name="matrix" value="0" />
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerCrop" value="6" />
+            <enum name="centerInside" value="7" />
+        </attr>
+        <attr name="fv_right_image" format="reference" />
+        <attr name="fv_right_image_max_width" format="dimension" />
+        <attr name="fv_right_image_max_height" format="dimension" />
+        <attr name="fv_right_image_left_margin" format="dimension" />
+        <attr name="fv_right_image_scale_type">
+            <enum name="matrix" value="0" />
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerCrop" value="6" />
+            <enum name="centerInside" value="7" />
+        </attr>
+        <!--内间距-->
+        <attr name="fv_left_padding" format="dimension" />
+        <attr name="fv_top_padding" format="dimension" />
+        <attr name="fv_bottom_padding" format="dimension" />
+        <attr name="fv_right_padding" format="dimension" />
+        <!--标题属性-->
+        <attr name="fv_title" format="string" />
+        <attr name="fv_title_text_size" format="dimension" />
+        <attr name="fv_title_text_style">
+            <enum name="bold" value="0" />
+            <enum name="italic" value="1" />
+            <enum name="normal" value="2" />
+        </attr>
+        <attr name="fv_title_text_width" format="float" />
+        <attr name="fv_title_right_margin" format="dimension" />
+        <attr name="fv_title_color" format="color" />
+        <!--整个表单布局是否能被点击-->
+        <attr name="fv_enable_child_click" format="boolean" />
+    </declare-styleable>
+
+    <!--表单右侧输入框-->
+    <declare-styleable name="FormEditView">
+        <!--输入框属性-->
+        <attr name="fev_hint" format="string" />
+        <attr name="fev_hint_color" format="color" />
+        <!--top bottom 适合多行显示配合fev_text_lines>1使用-->
+        <!--left right 适合单行显示-->
+        <attr name="fev_text_gravity">
+            <enum name="top" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+            <enum name="bottom" value="3" />
+        </attr>
+        <attr name="fev_text_lines" format="integer" />
+        <attr name="fev_text_color" format="color" />
+        <attr name="fev_text_size" format="dimension" />
+        <attr name="fev_text_max_length" format="integer" />
+        <attr name="fev_text_inputType">
+            <enum name="text" value="0" />
+            <enum name="phone" value="1" />
+            <enum name="password" value="2" />
+            <enum name="identifyCard" value="3" />
+            <enum name="number" value="4" />
+            <enum name="decimal" value="5" />
+        </attr>
+        <attr name="fev_text_right_margin" format="dimension" />
+        <attr name="fev_text_bg" format="reference" />
+        <!--单位属性-->
+        <attr name="fev_unit_text" format="string" />
+        <attr name="fev_unit_color" format="color" />
+        <attr name="fev_unit_text_size" format="dimension" />
+        <attr name="fev_unit_visible" format="boolean" />
+        <attr name="fev_unit_right_margin" format="dimension" />
+    </declare-styleable>
+
+    <!--表单底部多行输入框-->
+    <declare-styleable name="FormEditMultiView">
+        <attr name="femv_title_layout_left_padding" format="dimension" />
+        <attr name="femv_title_layout_top_padding" format="dimension" />
+        <attr name="femv_title_layout_right_padding" format="dimension" />
+        <attr name="femv_title_layout_bottom_padding" format="dimension" />
+
+        <attr name="femv_content_left_padding" format="dimension" />
+        <attr name="femv_content_top_padding" format="dimension" />
+        <attr name="femv_content_right_padding" format="dimension" />
+        <attr name="femv_content_bottom_padding" format="dimension" />
+
+        <attr name="femv_count_view_visible" format="boolean" />
+        <attr name="femv_count_left_text_color" format="color" />
+        <attr name="femv_count_right_text_color" format="color" />
+    </declare-styleable>
+
+    <!--表单带tips输入框-->
+    <declare-styleable name="FormEditTipsView">
+
+        <attr name="fetv_tips_top_margin" format="dimension"/>
+        <attr name="fetv_tips_text" format="string" />
+        <attr name="fetv_tips_text_color" format="color" />
+        <attr name="fetv_tips_text_size" format="dimension" />
+
+    </declare-styleable>
+</resources>
