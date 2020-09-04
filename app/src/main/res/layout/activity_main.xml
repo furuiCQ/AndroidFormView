@@ -11,6 +11,32 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
+        <RadioGroup
+            android:id="@+id/rg_state"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:checkedButton="@id/rb_left"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:text="否" />
+
+            <RadioButton
+                android:id="@+id/rb_right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:text="是" />
+
+        </RadioGroup>
+
         <com.markfrain.formview.view.FormSwitchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,13 +44,18 @@
             android:paddingTop="18dp"
             android:paddingRight="15dp"
             android:paddingBottom="18dp"
-            app:fsv_checkbox_right_margin="10dp"
             app:fsv_checkbox_drawable="@drawable/checkbox_switch"
+            app:fsv_checkbox_right_margin="10dp"
             app:fv_left_image="@drawable/ic_svg_star"
             app:fv_right_image="@drawable/ic_svg_right_arrow"
             app:fv_title="测试文本标题"
             app:fv_title_right_margin="15dp"
             app:fv_title_width="weight_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
 
         <com.markfrain.formview.view.FormRadioView
             android:layout_width="match_parent"
@@ -44,6 +75,11 @@
             app:fv_title_right_margin="15dp"
             app:fv_title_width="weight_content" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
+
         <com.markfrain.formview.view.FormImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,6 +92,11 @@
             app:fv_right_image="@drawable/ic_svg_right_arrow"
             app:fv_title="测试文本标题"
             app:fv_title_right_margin="15dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
 
         <com.markfrain.formview.view.FormEditView
             android:layout_width="match_parent"
