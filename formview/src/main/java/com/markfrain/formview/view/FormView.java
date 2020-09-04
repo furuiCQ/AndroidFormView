@@ -9,17 +9,19 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.markfrain.formview.R;
 import com.markfrain.formview.utils.DpUtils;
 
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @authoer create by markfrain
@@ -32,8 +34,8 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
     protected FormClickListener clickListener;
     protected FormLongClickListener longClickListener;
 
-    //是否禁用整个表单项的整体的点击功能
-    protected boolean enableChildClick;
+    private Map map;
+
     //默认内间距
     private static final int DEFUALT_PADDING = 15;
     //左侧图标
@@ -80,6 +82,10 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
     protected TextView tvTitle;
     //标题文字
     protected String title;
+    //标题宽度
+    protected int titleWidth = -2;
+
+    protected int titleMinWidth = 0;
     //标题文字样式
     protected int titleTextStyle = 2;
     //标题文字笔宽度
@@ -116,20 +122,20 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
     }
 
     protected void init(@NonNull Context context, @Nullable AttributeSet attrs) {
+        Log.i("init", "FormView");
         View rootView = LayoutInflater.from(context).inflate(layoutId(), this, false);
         addView(rootView);
         initView(rootView);
         initListener();
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FormView);
-            enableChildClick = typedArray.getBoolean(R.styleable.FormView_fv_enable_child_click, true);
             leftImageResource = typedArray.getResourceId(R.styleable.FormView_fv_left_image, 0);
             leftImageMaxWidth = typedArray.getDimensionPixelSize(R.styleable.FormView_fv_left_image_max_width, 0);
             leftImageMaxHeight = typedArray.getDimensionPixelSize(R.styleable.FormView_fv_left_image_max_height, 0);
             leftImageRightMargin = typedArray.getDimensionPixelSize(R.styleable.FormView_fv_left_image_right_margin, 0);
             final int leftIndex = typedArray.getInt(R.styleable.FormView_fv_left_image_scale_type, -1);
             if (leftIndex >= 0) {
-                setivLeftScaleType(sScaleTypeArray[leftIndex]);
+                setIvLeftScaleType(sScaleTypeArray[leftIndex]);
             }
             rightImageResource = typedArray.getResourceId(R.styleable.FormView_fv_right_image, 0);
             rightImageMaxWidth = typedArray.getDimensionPixelSize(R.styleable.FormView_fv_right_image_max_width, 0);
@@ -138,9 +144,11 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
             leftImageRightMargin = typedArray.getDimensionPixelSize(R.styleable.FormView_fv_left_image_right_margin, 0);
             final int rightIndex = typedArray.getInt(R.styleable.FormView_fv_right_image_scale_type, -1);
             if (rightIndex >= 0) {
-                setivRightScaleType(sScaleTypeArray[rightIndex]);
+                setIvRightScaleType(sScaleTypeArray[rightIndex]);
             }
             title = typedArray.getString(R.styleable.FormView_fv_title);
+            titleWidth = typedArray.getInt(R.styleable.FormView_fv_title_width, -2);
+            titleMinWidth = typedArray.getDimensionPixelSize(R.styleable.FormView_fv_title_min_width, 0);
             titleColor = typedArray.getColor(R.styleable.FormView_fv_title_color, Color.BLACK);
             titleTextStyle = typedArray.getInt(R.styleable.FormView_fv_title_text_style, 2);
             titleTextSize = typedArray.getDimensionPixelSize(R.styleable.FormView_fv_title_text_size, DpUtils.sp2px(context, DEFUALT_TITLE_SIZE));
@@ -149,19 +157,20 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
 
             typedArray.recycle();
         }
-        initivLeft();
+        initIvLeft(context);
         initTitle();
-        initivRight();
+        initIvRight(context);
     }
 
     @Override
     public void initView(View rootView) {
+        Log.i("initView", "FormView");
         ivLeft = rootView.findViewById(R.id.iv_left);
         tvTitle = rootView.findViewById(R.id.tv_title);
         ivRight = rootView.findViewById(R.id.iv_right);
     }
 
-    public void setivLeftScaleType(ImageView.ScaleType scaleType) {
+    public void setIvLeftScaleType(ImageView.ScaleType scaleType) {
         if (scaleType == null) {
             return;
         }
@@ -170,7 +179,7 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
         }
     }
 
-    public void setivRightScaleType(ImageView.ScaleType scaleType) {
+    public void setIvRightScaleType(ImageView.ScaleType scaleType) {
         if (scaleType == null) {
             return;
         }
@@ -185,9 +194,11 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
         view.setLayoutParams(layoutParams);
     }
 
-    private void initivRight() {
+    private void initIvRight(Context context) {
         setRightMargin(ivRight, rightImageRightMargin);
-        ivRight.setImageResource(rightImageResource);
+        if (rightImageResource != 0) {
+            ivRight.setImageDrawable(context.getResources().getDrawable(rightImageResource));
+        }
         if (rightImageMaxWidth != 0) {
             ivRight.setMaxWidth(rightImageMaxWidth);
         }
@@ -197,11 +208,13 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
         ivRight.setScaleType(ivRightScaleType);
     }
 
-    private void initivLeft() {
+    private void initIvLeft(Context context) {
         MarginLayoutParams layoutParams = (MarginLayoutParams) ivLeft.getLayoutParams();
         layoutParams.rightMargin = leftImageRightMargin;
         ivLeft.setLayoutParams(layoutParams);
-        ivLeft.setImageResource(leftImageResource);
+        if (leftImageResource != 0) {
+            ivLeft.setImageDrawable(context.getResources().getDrawable(leftImageResource));
+        }
         if (leftImageMaxWidth != 0) {
             ivLeft.setMaxWidth(leftImageMaxWidth);
         }
@@ -215,6 +228,15 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
     private void initTitle() {
         if (tvTitle == null) {
             return;
+        }
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) tvTitle.getLayoutParams();
+        layoutParams.width = titleWidth;
+        if (titleWidth == 0) {
+            layoutParams.weight = 1;
+        }
+        tvTitle.setLayoutParams(layoutParams);
+        if (titleMinWidth != 0) {
+            tvTitle.setMinWidth(titleMinWidth);
         }
         if (textPaintWidth != 0.F) {
             TextPaint tp = tvTitle.getPaint();
@@ -241,12 +263,12 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
     }
 
     private void initListener() {
-        if (enableChildClick) {
+        if (isEnabled()) {
             if (clickListener != null) {
                 getRootView().setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        clickListener.click(v, new HashMap());
+                        clickListener.click(v, map);
                     }
                 });
             }
@@ -254,13 +276,27 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
                 getRootView().setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        longClickListener.click(v, new HashMap());
+                        longClickListener.click(v, map);
                     }
                 });
             }
         }
     }
 
+    /**
+     * 设置点击后传递的map
+     *
+     * @param map
+     */
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    protected void setEnable(boolean enable, View view) {
+        view.setEnabled(enable);
+        view.setClickable(enable);
+        view.setFocusable(enable);
+    }
 
     /**
      * 获取表单值

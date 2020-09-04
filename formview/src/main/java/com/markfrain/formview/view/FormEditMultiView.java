@@ -132,6 +132,7 @@ public class FormEditMultiView extends FormEditView {
         tvCount.setText(spannableString);
     }
 
+
     @Override
     protected void initTvUnit() {
     }

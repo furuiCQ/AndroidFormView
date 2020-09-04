@@ -11,6 +11,51 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
+        <com.markfrain.formview.view.FormSwitchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="18dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="18dp"
+            app:fsv_checkbox_right_margin="10dp"
+            app:fsv_checkbox_drawable="@drawable/checkbox_switch"
+            app:fv_left_image="@drawable/ic_svg_star"
+            app:fv_right_image="@drawable/ic_svg_right_arrow"
+            app:fv_title="测试文本标题"
+            app:fv_title_right_margin="15dp"
+            app:fv_title_width="weight_content" />
+
+        <com.markfrain.formview.view.FormRadioView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="18dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="18dp"
+            app:frv_layout_min_width="150dp"
+            app:frv_left_to_right_margin="10dp"
+            app:frv_text_color="@color/radio_text_color"
+            app:frv_text_drawable_left="@drawable/radio_check"
+            app:frv_text_drawable_padding="10dp"
+            app:fv_left_image="@drawable/ic_svg_star"
+            app:fv_right_image="@drawable/ic_svg_right_arrow"
+            app:fv_title="测试文本标题"
+            app:fv_title_right_margin="15dp"
+            app:fv_title_width="weight_content" />
+
+        <com.markfrain.formview.view.FormImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="18dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="18dp"
+            app:fiv_src="@mipmap/base_iv_header_member"
+            app:fv_left_image="@drawable/ic_svg_star"
+            app:fv_right_image="@drawable/ic_svg_right_arrow"
+            app:fv_title="测试文本标题"
+            app:fv_title_right_margin="15dp" />
 
         <com.markfrain.formview.view.FormEditView
             android:layout_width="match_parent"
@@ -51,7 +96,8 @@
             app:fev_unit_text="单位"
             app:fv_left_image="@drawable/ic_svg_star"
             app:fv_right_image="@drawable/ic_svg_right_arrow"
-            app:fv_title="测试文本标题" />
+            app:fv_title="测试文本标题"
+            app:fv_title_width="weight_content" />
 
         <View
             android:layout_width="match_parent"

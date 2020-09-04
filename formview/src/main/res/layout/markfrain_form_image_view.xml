@@ -17,12 +17,18 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/iv_left"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="测试文字标题" />
+
+    <ImageView
+        android:id="@+id/iv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/iv_right"

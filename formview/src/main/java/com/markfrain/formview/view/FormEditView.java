@@ -233,4 +233,10 @@ public class FormEditView extends FormView<String> {
         }
         return etContent.getText().toString().trim();
     }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        setEnable(enabled,etContent);
+    }
 }

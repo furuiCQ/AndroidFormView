@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
     android:gravity="center_vertical">
 
     <ImageView
@@ -23,6 +25,29 @@
         app:layout_constraintLeft_toRightOf="@+id/iv_left"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="测试文字标题" />
+
+    <RadioGroup
+        android:id="@+id/rg_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="否" />
+
+        <RadioButton
+            android:id="@+id/rb_right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="是" />
+
+    </RadioGroup>
 
     <ImageView
         android:id="@+id/iv_right"

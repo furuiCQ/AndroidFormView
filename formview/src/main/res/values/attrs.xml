@@ -38,24 +38,29 @@
         <attr name="fv_right_padding" format="dimension" />
         <!--标题属性-->
         <attr name="fv_title" format="string" />
+        <!--标题宽度-->
+        <attr name="fv_title_width">
+            <enum name="wrap_content" value="-2" />
+            <enum name="weight_content" value="0" />
+        </attr>
+        <attr name="fv_title_min_width" format="dimension" />
         <attr name="fv_title_text_size" format="dimension" />
         <attr name="fv_title_text_style">
             <enum name="bold" value="0" />
             <enum name="italic" value="1" />
             <enum name="normal" value="2" />
         </attr>
+
         <attr name="fv_title_text_width" format="float" />
         <attr name="fv_title_right_margin" format="dimension" />
-        <attr name="fv_title_color" format="color" />
-        <!--整个表单布局是否能被点击-->
-        <attr name="fv_enable_child_click" format="boolean" />
+        <attr name="fv_title_color" format="reference|color" />
     </declare-styleable>
 
     <!--表单右侧输入框-->
     <declare-styleable name="FormEditView">
         <!--输入框属性-->
         <attr name="fev_hint" format="string" />
-        <attr name="fev_hint_color" format="color" />
+        <attr name="fev_hint_color" format="reference|color" />
         <!--top bottom 适合多行显示配合fev_text_lines>1使用-->
         <!--left right 适合单行显示-->
         <attr name="fev_text_gravity">
@@ -65,7 +70,7 @@
             <enum name="bottom" value="3" />
         </attr>
         <attr name="fev_text_lines" format="integer" />
-        <attr name="fev_text_color" format="color" />
+        <attr name="fev_text_color" format="reference|color" />
         <attr name="fev_text_size" format="dimension" />
         <attr name="fev_text_max_length" format="integer" />
         <attr name="fev_text_inputType">
@@ -80,7 +85,7 @@
         <attr name="fev_text_bg" format="reference" />
         <!--单位属性-->
         <attr name="fev_unit_text" format="string" />
-        <attr name="fev_unit_color" format="color" />
+        <attr name="fev_unit_color" format="reference|color" />
         <attr name="fev_unit_text_size" format="dimension" />
         <attr name="fev_unit_visible" format="boolean" />
         <attr name="fev_unit_right_margin" format="dimension" />
@@ -106,10 +111,39 @@
     <!--表单带tips输入框-->
     <declare-styleable name="FormEditTipsView">
 
-        <attr name="fetv_tips_top_margin" format="dimension"/>
+        <attr name="fetv_tips_top_margin" format="dimension" />
         <attr name="fetv_tips_text" format="string" />
-        <attr name="fetv_tips_text_color" format="color" />
+        <attr name="fetv_tips_text_color" format="reference|color" />
         <attr name="fetv_tips_text_size" format="dimension" />
 
+    </declare-styleable>
+
+    <!--表单图片组件-->
+    <declare-styleable name="FormImageView">
+        <attr name="fiv_src" format="reference" />
+    </declare-styleable>
+
+    <!--表单单选组件-->
+    <declare-styleable name="FormRadioView">
+        <attr name="frv_layout_min_width" format="dimension" />
+        <attr name="frv_text_gravity">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="frv_text_drawable_padding" format="dimension" />
+        <attr name="frv_text_drawable_left" format="reference" />
+        <attr name="frv_text_drawable_top" format="reference" />
+        <attr name="frv_text_drawable_right" format="reference" />
+        <attr name="frv_text_drawable_bottom" format="reference" />
+        <attr name="frv_left_to_right_margin" format="dimension" />
+        <attr name="frv_text_color" format="reference|color" />
+        <attr name="frv_text_size" format="dimension" />
+        <attr name="frv_left_text" format="string" />
+        <attr name="frv_right_text" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="FormSwitchView">
+        <attr name="fsv_checkbox_drawable" format="reference" />
+        <attr name="fsv_checkbox_right_margin" format="dimension"/>
     </declare-styleable>
 </resources>
