@@ -14,7 +14,7 @@ Android form view use to forms
 
 ```gradle
 
-	implementation 'com.markfrain.utils:formview:1.0.0'
+implementation 'com.markfrain.utils:formview:1.0.0'
 
 ```
 
@@ -59,8 +59,8 @@ TODO 1.自定义分割线
 
 FormView Attribute如下
 
-|--|--|--|
 |属性字段名称|属性描述|备注|
+|:-|:-|:-|
 |fv_left_image|左侧图标||
 |fv_left_image_max_width|左侧图标最大宽度||
 |fv_left_image_max_height|左侧图标最大高度||
@@ -87,8 +87,8 @@ FormView Attribute如下
 
 FormView 内部方法介绍
 
-|--|--|
 |方法名|用途|
+|:-|:-|
 |init(Context,AttributeSet)|初始化布局，以及获取属性|
 |initView(View)|控件初始化findViewById|
 |setMap(Map)|暴露外界传参方法,FormClickListener和FormLongClickListener将把该值返回|
@@ -105,8 +105,8 @@ FormView 内部方法介绍
 
 FormEditView Attribute如下
 
-|--|--|--|
 |属性字段名称|属性描述|备注|
+|:-|:-|:-|
 |fev_hint|输入框提示语|
 |fev_hint_color|输入框提示语颜色|
 |fev_text_gravity|输入框文字内容定位|top bottom 适合多行显示配合fev_text_lines>1使用,left right 适合单行显示|
@@ -131,8 +131,8 @@ FormEditView Attribute如下
 
 FormEditMultiView Attribute如下
 
-|--|--|--|
 |属性字段名称|属性描述|备注|
+|:-|:-|:-|
 |femv_title_layout_left_padding|标题布局左内间距|
 |femv_title_layout_top_padding|标题布局上内间距|
 |femv_title_layout_right_padding|标题布局右内间距|
@@ -152,8 +152,8 @@ FormEditMultiView Attribute如下
 
 FormEditTipsView Attribute如下
 
-|--|--|--|
 |属性字段名称|属性描述|备注|
+|:-|:-|:-|
 |fetv_tips_top_margin|提示文字上边距|
 |fetv_tips_text|提示文字内容|
 |fetv_tips_text_color|提示文字颜色|
@@ -168,8 +168,9 @@ FormEditTipsView Attribute如下
 
 FormRadioView Attribute如下
 
-|--|--|--|
+
 |属性字段名称|属性描述|备注|
+|:-|:-|:-|
 |frv_layout_min_width|RadioGroup的最小宽度。默认是wrap_content|
 |frv_text_gravity|RadioGroup内容对齐方式left/right。都是垂直居中的|
 |frv_text_drawable_padding|单选按钮的drawabPadding属性|
@@ -186,8 +187,9 @@ FormRadioView Attribute如下
 ## FormSwitchView
 
 FormSwitchView Attribute如下
-|--|--|--|
+
 |属性字段名称|属性描述|备注|
+|:-|:-|:-|
 |fsv_checkbox_drawable|CheckBox的drawableLeft|
 |fsv_checkbox_right_margin|CheckBox的右边距|
 
@@ -284,7 +286,7 @@ FormSwitchView Attribute如下
 当前FormRadioView 有如下4个属性。
 
 ```xml
- 		<attr name="frv_text_drawable_left" format="reference" />
+ 	<attr name="frv_text_drawable_left" format="reference" />
         <attr name="frv_text_drawable_top" format="reference" />
         <attr name="frv_text_drawable_right" format="reference" />
         <attr name="frv_text_drawable_bottom" format="reference" />
