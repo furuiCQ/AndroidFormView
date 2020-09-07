@@ -10,6 +10,15 @@ Android form view use to forms
 如果给你启示，你也可以自己封装自己业务中的代码为组件库，方便统一管理。
 
 
+如何引用
+
+```gradle
+
+	implementation 'com.markfrain.utils:formview:1.0.0'
+
+```
+
+
 TODO 1.自定义分割线
 
 # 表单组件场景
