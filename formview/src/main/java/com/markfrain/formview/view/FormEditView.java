@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.markfrain.formview.R;
+import com.markfrain.formview.base.FormView;
 import com.markfrain.formview.utils.DpUtils;
 
 /**
@@ -38,6 +39,8 @@ public class FormEditView extends FormView<String> {
     private String hintText;
 
     private int hintTextColor = Color.LTGRAY;
+
+    private String text;
 
     private int textSize;
 
@@ -60,6 +63,8 @@ public class FormEditView extends FormView<String> {
     private String unitText;
 
     private int unitRightMargin = 0;
+
+    private boolean enable;
 
     private TextWatcher textWatcher;
 
@@ -99,6 +104,7 @@ public class FormEditView extends FormView<String> {
             maxLength = typedArray.getInt(R.styleable.FormEditView_fev_text_max_length, -1);
             inputType = typedArray.getInt(R.styleable.FormEditView_fev_text_inputType, 0);
             textRightMargin = typedArray.getDimensionPixelSize(R.styleable.FormEditView_fev_text_right_margin, 0);
+            text = typedArray.getString(R.styleable.FormEditView_fev_text);
             textBg = typedArray.getResourceId(R.styleable.FormEditView_fev_text_bg, -1);
             textGravity = typedArray.getInt(R.styleable.FormEditView_fev_text_gravity, 0);
             textLines = typedArray.getInt(R.styleable.FormEditView_fev_text_lines, 1);
@@ -107,7 +113,7 @@ public class FormEditView extends FormView<String> {
             unitVisible = typedArray.getBoolean(R.styleable.FormEditView_fev_unit_visible, false);
             unitText = typedArray.getString(R.styleable.FormEditView_fev_unit_text);
             unitRightMargin = typedArray.getDimensionPixelSize(R.styleable.FormEditView_fev_unit_right_margin, 0);
-
+            enable = typedArray.getBoolean(R.styleable.FormEditView_fev_edit, false);
 
             typedArray.recycle();
         }
@@ -133,6 +139,9 @@ public class FormEditView extends FormView<String> {
         if (!TextUtils.isEmpty(hintText)) {
             etContent.setHint(hintText);
         }
+        if (!TextUtils.isEmpty(text)) {
+            etContent.setText(text);
+        }
         etContent.setHintTextColor(hintTextColor);
         etContent.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
         etContent.setTextColor(textColor);
@@ -145,6 +154,7 @@ public class FormEditView extends FormView<String> {
         if (textWatcher != null) {
             etContent.addTextChangedListener(textWatcher);
         }
+        setEnable(enable, etContent);
     }
 
     public void setTextGravity(int textGravity) {
@@ -213,6 +223,18 @@ public class FormEditView extends FormView<String> {
         setUnitText(unitText);
     }
 
+    public void setText(String text) {
+        this.text = text;
+        if (!TextUtils.isEmpty(text)) {
+            etContent.setText(text);
+        }
+        etContent.setSelection(etContent.getText().toString().length());
+    }
+
+    public void setTextColor(int resColor) {
+        etContent.setTextColor(getResources().getColor(resColor));
+    }
+
     public void setUnitText(String unitText) {
         tvUnit.setVisibility(View.VISIBLE);
         tvUnit.setText(unitText);
@@ -237,6 +259,6 @@ public class FormEditView extends FormView<String> {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        setEnable(enabled,etContent);
+        setEnable(enabled, etContent);
     }
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.CheckBox;
 
 import com.markfrain.formview.R;
+import com.markfrain.formview.base.FormView;
 
 /**
  * @authoer create by markfrain

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.markfrain.formview.R;
+import com.markfrain.formview.base.FormView;
 
 /**
  * @authoer create by markfrain

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--表单样式统一-->
+    <style name="FormBaseStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="fv_left_image_right_margin">15dp</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="FormSettStyle" parent="FormBaseStyle">
+        <item name="fv_right_image">@drawable/ic_svg_right_arrow</item>
+    </style>
+</resources>

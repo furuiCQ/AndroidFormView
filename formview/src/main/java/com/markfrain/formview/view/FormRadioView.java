@@ -15,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.markfrain.formview.R;
+import com.markfrain.formview.base.FormView;
 import com.markfrain.formview.utils.DpUtils;
 
 /**

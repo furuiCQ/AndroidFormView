@@ -1,4 +1,4 @@
-package com.markfrain.formview.view;
+package com.markfrain.formview.base;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.markfrain.formview.R;
+import com.markfrain.formview.base.FormView;
 
 /**
  * @authoer create by markfrain

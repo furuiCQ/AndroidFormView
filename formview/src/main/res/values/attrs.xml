@@ -69,6 +69,7 @@
             <enum name="right" value="2" />
             <enum name="bottom" value="3" />
         </attr>
+        <attr name="fev_text" format="string" />
         <attr name="fev_text_lines" format="integer" />
         <attr name="fev_text_color" format="reference|color" />
         <attr name="fev_text_size" format="dimension" />
@@ -89,6 +90,7 @@
         <attr name="fev_unit_text_size" format="dimension" />
         <attr name="fev_unit_visible" format="boolean" />
         <attr name="fev_unit_right_margin" format="dimension" />
+        <attr name="fev_edit" format="boolean" />
     </declare-styleable>
 
     <!--表单底部多行输入框-->
@@ -144,6 +146,8 @@
 
     <declare-styleable name="FormSwitchView">
         <attr name="fsv_checkbox_drawable" format="reference" />
-        <attr name="fsv_checkbox_right_margin" format="dimension"/>
+        <attr name="fsv_checkbox_right_margin" format="dimension" />
     </declare-styleable>
+
+
 </resources>
