@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -222,7 +223,9 @@ public class FormEditView extends FormView<String> {
         tvUnit.setTextSize(TypedValue.COMPLEX_UNIT_PX, unitTextSize);
         setUnitText(unitText);
     }
-
+    public void setText(@StringRes int resid) {
+        setText(getContext().getResources().getString(resid));
+    }
     public void setText(String text) {
         this.text = text;
         if (!TextUtils.isEmpty(text)) {
