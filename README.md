@@ -430,5 +430,8 @@ TypedArray.getDrawable之后获取到的是StateListDrawable。
 	//所以rbRight的显示改变了，但状态仍然为false。
 ```
 
+## 2020/11/27 v1.1.0版本更新日志
 
+经过项目应用2个月，新增FormTextView，修复点击范围过小的问题。
+点击事件未加防抖动，如需要直接自己包装一层即可。
 
