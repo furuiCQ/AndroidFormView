@@ -5,14 +5,17 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -89,14 +92,15 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
     //标题文字样式
     protected int titleTextStyle = 2;
     //标题文字笔宽度
-    private float textPaintWidth = 0.F;
+    private float textPaintWidth = 1.1F;
     //标题文字大小
     protected int titleTextSize;
     //标题文字颜色
     protected int titleColor = Color.BLACK;
     //标题文字右边距
     protected int titleRightMargin;
-
+    //root布局
+    protected ViewGroup llroot;
 
     public FormView(Context context) {
         super(context);
@@ -168,6 +172,7 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
         ivLeft = rootView.findViewById(R.id.iv_left);
         tvTitle = rootView.findViewById(R.id.tv_title);
         ivRight = rootView.findViewById(R.id.iv_right);
+        llroot = rootView.findViewById(R.id.ll_root);
     }
 
     public void setIvLeftScaleType(ImageView.ScaleType scaleType) {
@@ -206,6 +211,19 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
             ivRight.setMaxHeight(rightImageMaxHeight);
         }
         ivRight.setScaleType(ivRightScaleType);
+    }
+
+    public void setLeftImage(int drawableRes) {
+        leftImageResource = drawableRes;
+        ivLeft.setImageDrawable(getContext().getResources().getDrawable(leftImageResource));
+    }
+
+    public void setRightImage(int drawableRes) {
+        rightImageResource = drawableRes;
+        ivRight.setImageDrawable(getContext().getResources().getDrawable(rightImageResource));
+    }
+    public void setRightImage(Drawable drawableRes) {
+        ivRight.setImageDrawable(drawableRes);
     }
 
     private void initIvLeft(Context context) {
@@ -262,26 +280,44 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
         setRightMargin(tvTitle, titleRightMargin);
     }
 
-    private void initListener() {
-        if (isEnabled()) {
-            if (clickListener != null) {
-                getRootView().setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        clickListener.click(v, map);
-                    }
-                });
-            }
-            if (longClickListener != null) {
-                getRootView().setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        longClickListener.click(v, map);
-                    }
-                });
-            }
+    public void setTitle(String res) {
+        if (tvTitle != null) {
+            title = res;
+            tvTitle.setText(title);
         }
     }
+
+    public void setTitle(@StringRes int res) {
+        if (tvTitle != null) {
+            title = getContext().getString(res);
+            tvTitle.setText(title);
+        }
+    }
+
+    protected void initListener() {
+        //if (isEnabled()) {
+        llroot.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (clickListener != null) {
+                    clickListener.click(v, map);
+                }
+            }
+        });
+
+        llroot.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (longClickListener != null) {
+                    longClickListener.click(v, map);
+                    return true;
+                }
+                return false;
+            }
+        });
+        // }
+    }
+
 
     /**
      * 设置点击后传递的map
@@ -293,8 +329,7 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
     }
 
     protected void setEnable(boolean enable, View view) {
-        view.setEnabled(enable);
-        view.setClickable(enable);
+        //view.setEnabled(enable);
         view.setFocusable(enable);
     }
 
@@ -309,4 +344,23 @@ public abstract class FormView<T> extends FrameLayout implements FormViewInterfa
      * 留存方法用于自定义效果，覆盖原有组件属性
      */
     protected abstract void initCustom();
+
+    public void showRight(int visible) {
+        if (ivRight != null) {
+            ivRight.setVisibility(visible);
+        }
+    }
+
+    public ImageView getIvLeft() {
+        return ivLeft;
+    }
+
+    public TextView getTitle() {
+        return tvTitle;
+    }
+
+    public ImageView getIvRight() {
+        return ivRight;
+    }
 }
+

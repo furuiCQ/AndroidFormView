@@ -13,6 +13,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.markfrain.formview.R;
@@ -28,6 +29,7 @@ import java.util.Locale;
 public class FormEditMultiView extends FormEditView {
     private LinearLayout llTitle;
     private TextView tvCount;
+    private View Line;
 
     private int layoutLeftPadding;
     private int layoutTopPadding;
@@ -39,7 +41,11 @@ public class FormEditMultiView extends FormEditView {
     private int contentRightPadding;
     private int contentBottomPadding;
 
+    private int contentMinHeight;
+
     private boolean countViewVisible;
+
+    private boolean lineVisible;
 
     private int leftColor = Color.BLACK;
     private int rightColor = Color.BLACK;
@@ -78,9 +84,13 @@ public class FormEditMultiView extends FormEditView {
             contentRightPadding = typedArray.getDimensionPixelSize(R.styleable.FormEditMultiView_femv_content_right_padding, 0);
             contentBottomPadding = typedArray.getDimensionPixelSize(R.styleable.FormEditMultiView_femv_content_bottom_padding, 0);
 
+            contentMinHeight = typedArray.getDimensionPixelSize(R.styleable.FormEditMultiView_femv_content_min_height, 0);
+
             countViewVisible = typedArray.getBoolean(R.styleable.FormEditMultiView_femv_count_view_visible, false);
             leftColor = typedArray.getColor(R.styleable.FormEditMultiView_femv_count_left_text_color, Color.BLACK);
             rightColor = typedArray.getColor(R.styleable.FormEditMultiView_femv_count_right_text_color, Color.BLACK);
+
+            lineVisible = typedArray.getBoolean(R.styleable.FormEditMultiView_femv_line_visible, false);
 
             typedArray.recycle();
         }
@@ -92,6 +102,7 @@ public class FormEditMultiView extends FormEditView {
         super.initView(rootView);
         llTitle = rootView.findViewById(R.id.ll_title);
         tvCount = rootView.findViewById(R.id.tv_count);
+        Line = rootView.findViewById(R.id.line);
     }
 
     @Override
@@ -120,6 +131,11 @@ public class FormEditMultiView extends FormEditView {
         if (countViewVisible) {
             setCountText("0");
         }
+        if (contentMinHeight > 0) {
+            etContent.setMinHeight(contentMinHeight);
+            etContent.setSingleLine(false);//TODO 没发现是哪里被设置为true了
+        }
+        Line.setVisibility(lineVisible ? View.VISIBLE : View.GONE);
     }
 
     void setCountText(String left) {
@@ -132,6 +148,17 @@ public class FormEditMultiView extends FormEditView {
         tvCount.setText(spannableString);
     }
 
+    @Override
+    protected void setContentLayout() {
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) etContent.getLayoutParams();
+        layoutParams.width = textWidth;
+        if (textWidth == 0) {
+            layoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT;
+        } else {
+            layoutParams.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+        }
+        etContent.setLayoutParams(layoutParams);
+    }
 
     @Override
     protected void initTvUnit() {

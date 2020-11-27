@@ -9,10 +9,45 @@
         <item name="android:paddingBottom">15dp</item>
         <item name="android:paddingRight">15dp</item>
         <item name="fv_left_image_right_margin">15dp</item>
+        <item name="fv_title_text_size">16sp</item>
+        <item name="fev_text_size">16sp</item>
+        <item name="ftv_hint_color">#999999</item>
+        <item name="fev_hint_color">#999999</item>
         <item name="android:background">@android:color/white</item>
     </style>
 
+
     <style name="FormSettStyle" parent="FormBaseStyle">
         <item name="fv_right_image">@drawable/ic_svg_right_arrow</item>
+    </style>
+
+    <style name="FormSwitchStyle">
+        <item name="android:button">@null</item>
+        <item name="android:drawableRight">@drawable/base_ios_switch</item>
+    </style>
+
+    <style name="FormMutlineEditStyle">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="femv_content_bottom_padding">12dp</item>
+        <item name="femv_content_left_padding">15dp</item>
+        <item name="femv_content_min_height">100dp</item>
+        <item name="femv_content_right_padding">15dp</item>
+        <item name="femv_content_top_padding">12dp</item>
+        <item name="femv_line_visible">true</item>
+        <item name="femv_title_layout_bottom_padding">15dp</item>
+        <item name="femv_title_layout_left_padding">15dp</item>
+        <item name="femv_title_layout_right_padding">15dp</item>
+        <item name="femv_title_layout_top_padding">15dp</item>
+        <item name="fv_title_width">weight_content</item>
+        <item name="fev_text_width">weight_content</item>
+        <item name="fev_text_gravity">top</item>
+        <item name="fev_hint_color">#999999</item>
+        <item name="fv_title_color">#333333</item>
+        <item name="fev_text_color">#666666</item>
+        <item name="fev_text_lines">5</item>
+        <item name="fev_text_inputType">text</item>
+        <item name="fev_edit">true</item>
     </style>
 </resources>

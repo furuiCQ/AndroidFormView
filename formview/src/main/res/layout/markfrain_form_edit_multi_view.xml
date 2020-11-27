@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
@@ -17,21 +18,25 @@
         <ImageView
             android:id="@+id/iv_left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:src="@drawable/ic_svg_star" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="测试文字标题" />
+            android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/iv_right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:src="@drawable/ic_svg_right_arrow" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:alpha="0.64"
+        android:background="#eeeeee" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -43,7 +48,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:gravity="left"
-            android:minHeight="200dp"
+            android:minLines="5"
             tools:hint="测试文字内容" />
 
         <TextView

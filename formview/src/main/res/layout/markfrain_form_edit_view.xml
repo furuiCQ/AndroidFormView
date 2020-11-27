@@ -2,15 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:descendantFocusability="afterDescendants"
+    android:focusableInTouchMode="true"
     android:gravity="center_vertical">
 
     <ImageView
         android:id="@+id/iv_left"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:src="@drawable/ic_svg_star" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -21,21 +25,19 @@
 
     <EditText
         android:id="@+id/et_content"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:background="@null"
-        tools:hint="测试文字内容" />
+        tools:hint="仅预览展示Hint" />
 
     <TextView
         android:id="@+id/tv_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="元"/>
+        android:text="元" />
 
     <ImageView
         android:id="@+id/iv_right"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:src="@drawable/ic_svg_right_arrow" />
+        android:layout_height="wrap_content" />
 </LinearLayout>

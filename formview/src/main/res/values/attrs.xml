@@ -57,6 +57,40 @@
     </declare-styleable>
 
     <!--表单右侧输入框-->
+    <declare-styleable name="FormTextView">
+        <!--输入框属性-->
+        <attr name="ftv_hint" format="string" />
+        <attr name="ftv_hint_color" format="reference|color" />
+        <!--top bottom 适合多行显示配合ftv_text_lines>1使用-->
+        <!--left right 适合单行显示-->
+        <attr name="ftv_text_gravity">
+            <enum name="top" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+            <enum name="bottom" value="3" />
+            <enum name="center" value="4" />
+        </attr>
+        <attr name="ftv_text" format="string" />
+        <attr name="ftv_text_lines" format="integer" />
+        <attr name="ftv_text_color" format="reference|color" />
+        <attr name="ftv_text_size" format="dimension" />
+        <attr name="ftv_text_max_length" format="integer" />
+        <attr name="ftv_text_right_margin" format="dimension" />
+        <attr name="ftv_text_bg" format="reference" />
+        <attr name="ftv_text_width">
+            <enum name="wrap_content" value="-2" />
+            <enum name="weight_content" value="0" />
+        </attr>
+        <!--单位属性-->
+        <attr name="ftv_unit_text" format="string" />
+        <attr name="ftv_unit_color" format="reference|color" />
+        <attr name="ftv_unit_text_size" format="dimension" />
+        <attr name="ftv_unit_visible" format="boolean" />
+        <attr name="ftv_unit_right_margin" format="dimension" />
+    </declare-styleable>
+
+
+    <!--表单右侧输入框-->
     <declare-styleable name="FormEditView">
         <!--输入框属性-->
         <attr name="fev_hint" format="string" />
@@ -84,6 +118,10 @@
         </attr>
         <attr name="fev_text_right_margin" format="dimension" />
         <attr name="fev_text_bg" format="reference" />
+        <attr name="fev_text_width">
+            <enum name="wrap_content" value="-2" />
+            <enum name="weight_content" value="0" />
+        </attr>
         <!--单位属性-->
         <attr name="fev_unit_text" format="string" />
         <attr name="fev_unit_color" format="reference|color" />
@@ -105,9 +143,13 @@
         <attr name="femv_content_right_padding" format="dimension" />
         <attr name="femv_content_bottom_padding" format="dimension" />
 
+        <attr name="femv_content_min_height" format="dimension" />
+
         <attr name="femv_count_view_visible" format="boolean" />
         <attr name="femv_count_left_text_color" format="color" />
         <attr name="femv_count_right_text_color" format="color" />
+
+        <attr name="femv_line_visible" format="boolean" />
     </declare-styleable>
 
     <!--表单带tips输入框-->
@@ -142,12 +184,15 @@
         <attr name="frv_text_size" format="dimension" />
         <attr name="frv_left_text" format="string" />
         <attr name="frv_right_text" format="string" />
+        <attr name="frv_tint" format="reference|color" />
     </declare-styleable>
 
     <declare-styleable name="FormSwitchView">
         <attr name="fsv_checkbox_drawable" format="reference" />
         <attr name="fsv_checkbox_right_margin" format="dimension" />
+        <attr name="fsv_text" format="string" />
+        <attr name="fsv_text_color" format="reference|color" />
+        <attr name="fsv_text_size" format="dimension" />
     </declare-styleable>
-
 
 </resources>

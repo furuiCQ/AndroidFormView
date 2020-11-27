@@ -73,4 +73,3 @@ public class FormImageView extends FormView<String> {
 
     }
 }
-

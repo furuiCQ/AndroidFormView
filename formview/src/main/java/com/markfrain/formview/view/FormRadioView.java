@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -56,6 +57,12 @@ public class FormRadioView extends FormView<Boolean> {
 
     private RadioGroup.OnCheckedChangeListener checkedChangeListener;
 
+    private String leftText;
+
+    private String rightText;
+
+    private ColorStateList tintColor;
+
     public void setCheckedChangeListener(RadioGroup.OnCheckedChangeListener checkedChangeListener) {
         this.checkedChangeListener = checkedChangeListener;
     }
@@ -100,6 +107,9 @@ public class FormRadioView extends FormView<Boolean> {
 
             radioTextColor = typedArray.getColorStateList(R.styleable.FormRadioView_frv_text_color);
             radioTextSize = typedArray.getDimensionPixelSize(R.styleable.FormRadioView_frv_text_size, radioTextSize);
+            leftText = typedArray.getString(R.styleable.FormRadioView_frv_left_text);
+            rightText = typedArray.getString(R.styleable.FormRadioView_frv_right_text);
+            tintColor = typedArray.getColorStateList(R.styleable.FormRadioView_frv_tint);
             typedArray.recycle();
         }
         initCustom();
@@ -131,8 +141,7 @@ public class FormRadioView extends FormView<Boolean> {
         MarginLayoutParams layoutParams = (MarginLayoutParams) rbLeft.getLayoutParams();
         layoutParams.rightMargin = left2RightMargin;
         rbLeft.setLayoutParams(layoutParams);
-        //TODO 待深刻剖析原因，
-        // TODO 对象引用一个，切换state时导致状态切换与RadioButton对不上
+
         if (leftDrawable != null || topDrawable != null || rightDrawable != null || bottomDrawable != null) {
             rbLeft.setButtonDrawable(null);
             rbRight.setButtonDrawable(null);
@@ -149,7 +158,27 @@ public class FormRadioView extends FormView<Boolean> {
         rbLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX, radioTextSize);
         rbRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, radioTextSize);
 
-        rgState.setOnCheckedChangeListener(checkedChangeListener);
+        rbLeft.setText(leftText);
+        rbRight.setText(rightText);
+
+        if (tintColor != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                rbLeft.setButtonTintList(tintColor);
+                rbRight.setButtonTintList(tintColor);
+            }
+        }
+    }
+
+    @Override
+    protected void initListener() {
+        rgState.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedChangeListener != null) {
+                    checkedChangeListener.onCheckedChanged(group, checkedId);
+                }
+            }
+        });
     }
 
     public Drawable copyDrawable(Drawable drawable) {

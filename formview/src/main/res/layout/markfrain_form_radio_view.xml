@@ -30,6 +30,7 @@
         android:id="@+id/rg_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checkedButton="@id/rb_left"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.markfrain.formview.R;
@@ -63,7 +64,7 @@ public class FormEditTipsView extends FormEditView {
         tvTips.setText(tipsText);
         tvTips.setTextSize(TypedValue.COMPLEX_UNIT_PX, tipsTextSize);
         tvTips.setTextColor(tipsColor);
-        MarginLayoutParams layoutParams = (MarginLayoutParams) tvTips.getLayoutParams();
+        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) tvTips.getLayoutParams();
         layoutParams.topMargin = tipsTopMargin;
         tvTips.setLayoutParams(layoutParams);
     }
